@@ -1,0 +1,47 @@
+﻿<Window x:Class="kenyapp.Views.VentaWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Venta" Height="600" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <!-- IZQUIERDA: LISTADO DE BEBIDAS -->
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Bebidas" FontWeight="Bold" FontSize="18" Margin="10"/>
+            <!-- ListView con GridView para mostrar nombre y precio -->
+            <ListView x:Name="lstBebidas" MouseDoubleClick="lstBebidas_MouseDoubleClick" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="150"/>
+                        <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding Precio}" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!-- Selección de cantidad -->
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Cantidad:" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtCantidad" Width="50" Text="1" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+        <!-- DERECHA: PEDIDO -->
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Pedido Actual" FontWeight="Bold" FontSize="18" Margin="10"/>
+            <ListView x:Name="lstPedido" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding Nombre}" Width="200"/>
+                        <GridViewColumn Header="Cant." DisplayMemberBinding="{Binding Cantidad}" Width="50"/>
+                        <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioTotal}" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="txtSubtotal" FontSize="16" FontWeight="Bold" Text="Subtotal: $0" Margin="10"/>
+            <!-- BOTONERA -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Text="Cantidad de tickets:" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtCantidadTickets" Width="50" Text="1" Margin="5"/>
+                <Button Content="Ticket" Width="100" Margin="5" Click="btnTicket_Click"/>
+                <Button Content="Salir" Width="100" Margin="5" Click="btnSalir_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

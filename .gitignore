@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.exe
+*.dll
+
+# Rider/IDE específicos (opcional)
+.idea/
+
+# Paquetes NuGet
+*.nupkg
