@@ -7,29 +7,31 @@ namespace kenyapp.Data
     {
         public static void Initialize()
         {
-            if (!File.Exists("kenya.db"))
+            if (!File.Exists("boliche.db"))
             {
-                using var connection = new SqliteConnection("Data Source=kenya.db");
+                using var connection = new SqliteConnection("Data Source=boliche.db");
                 connection.Open();
 
-                var createBebidas = @"
-                    CREATE TABLE Bebidas (
+                var createProductos = @"
+                    CREATE TABLE Productos (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Nombre TEXT NOT NULL,
                         Precio REAL NOT NULL,
+                        Tipo TEXT NOT NULL,
                         Activo INTEGER NOT NULL
                     );";
 
                 var createVentas = @"
                     CREATE TABLE Ventas (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        BebidaId INTEGER NOT NULL,
+                        ProductoId INTEGER NOT NULL,
                         FechaHora TEXT NOT NULL,
                         PrecioUnitario REAL NOT NULL,
-                        Cantidad INTEGER NOT NULL
+                        Cantidad INTEGER NOT NULL,
+                        FOREIGN KEY(ProductoId) REFERENCES Productos(Id)
                     );";
 
-                using var cmd1 = new SqliteCommand(createBebidas, connection);
+                using var cmd1 = new SqliteCommand(createProductos, connection);
                 cmd1.ExecuteNonQuery();
 
                 using var cmd2 = new SqliteCommand(createVentas, connection);

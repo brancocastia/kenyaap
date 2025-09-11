@@ -9,7 +9,7 @@ namespace kenyapp.Models
     public class Pedido
     {
         public DateTime Fecha { get; set; }
-        public List<Bebida> Bebidas { get; set; } = new List<Bebida>();
+        public List<Producto> Bebidas { get; set; } = new List<Producto>();
     }
 
 

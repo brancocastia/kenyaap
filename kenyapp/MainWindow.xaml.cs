@@ -37,7 +37,8 @@ namespace kenyapp
 
         private void Reportes_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá la pantalla de reportes.");
+            var guiPrincipalWindow= new GuiPrincipalWindow();
+            guiPrincipalWindow.ShowDialog(); // Se abre como ventana modal
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)

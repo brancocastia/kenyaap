@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="KENYA - Bienvenido" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
-        Background="#1e1e1e">
+        Background="White">
 
-    <Grid Margin="20">
+    <Grid Margin="20" Background="#f5f5f5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -13,7 +13,7 @@
 
         <!-- Título -->
         <TextBlock Text="KENYA" 
-                   Foreground="White" 
+                   Foreground="#0099D6" 
                    FontSize="48" 
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
@@ -22,12 +22,12 @@
         <!-- Botones -->
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
             <Button Content="💵 Botonera (Vender)" Height="60" FontSize="20" 
-                    Background="#ff7f00" Foreground="White" FontWeight="Bold" 
+                    Background="#0099D6" Foreground="White" FontWeight="Bold" 
                     Margin="0,0,0,15"
                     Click="Botonera_Click"/>
 
             <Button Content="⚙️ Ajustes (Bebidas y Precios)" Height="60" FontSize="20"
-                    Background="#009688" Foreground="White" FontWeight="Bold"
+                    Background="#4CAF50" Foreground="White" FontWeight="Bold"
                     Margin="0,0,0,15"
                     Click="Ajustes_Click"/>
 

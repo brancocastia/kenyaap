@@ -62,10 +62,10 @@ namespace kenyapp.Views
                 var cmd = con.CreateCommand();
                 cmd.CommandText = "SELECT Id, Nombre, Precio FROM Bebidas WHERE Activo = 1 ORDER BY Nombre";
                 var reader = cmd.ExecuteReader();
-                var lista = new List<Bebida>();
+                var lista = new List<Producto>();
                 while (reader.Read())
                 {
-                    lista.Add(new Bebida
+                    lista.Add(new Producto
                     {
                         Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
@@ -83,7 +83,7 @@ namespace kenyapp.Views
 
         private void lstBebidas_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (!(lstBebidas.SelectedItem is Bebida bebida)) return;
+            if (!(lstBebidas.SelectedItem is Producto bebida)) return;
 
             int cantidad = 1;
             if (!string.IsNullOrEmpty(txtCantidad.Text))
@@ -98,7 +98,7 @@ namespace kenyapp.Views
 
             for (int i = 0; i < cantidad; i++)
             {
-                pedidoActual.Bebidas.Add(new Bebida
+                pedidoActual.Bebidas.Add(new Producto
                 {
                     Id = bebida.Id,
                     Nombre = bebida.Nombre,
@@ -194,24 +194,7 @@ namespace kenyapp.Views
             txtCantidadTickets.Text = "1";
         }
 
-        /* private void btnTestImpresora_Click(object sender, RoutedEventArgs e)
-        {
-            if (_impresoraService == null)
-            {
-                InicializarImpresora();
-            }
 
-            if (_impresoraService != null)
-            {
-                _impresoraService.TestConexion();
-            }
-            else
-            {
-                MessageBox.Show("No se puede conectar con la impresora", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        */
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             _impresoraService = null;
