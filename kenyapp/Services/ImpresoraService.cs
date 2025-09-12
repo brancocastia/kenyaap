@@ -21,13 +21,13 @@ namespace kenyapp.Services
             decimal total = 0;
 
             // --- Cabecera ---
-            printer.AlignCenter();
+            /*printer.AlignCenter();
             printer.BoldMode("KENYA BAR");
             printer.NewLine();
             printer.Append("----------------------");
             printer.NewLine();
             printer.Append($"Fecha: {pedido.Fecha}");
-            printer.NewLine();
+            printer.NewLine();*/
 
             // --- Bebidas ---
             foreach (var bebida in pedido.Bebidas)
@@ -44,9 +44,9 @@ namespace kenyapp.Services
             printer.NewLine();
 
             // --- Mensaje final ---
-            printer.AlignCenter();
+          /*  printer.AlignCenter();
             printer.Append("Gracias y portate bien pajero gonza vigila");
-            printer.NewLine();
+            printer.NewLine();*/
 
             // --- Avanza y corta ---
             printer.NewLines(3);

@@ -185,6 +185,7 @@ namespace kenyapp.Views
             ReiniciarPedido();
         }
 
+
         private void ReiniciarPedido()
         {
             pedidoActual = new Pedido { Fecha = DateTime.Now };
