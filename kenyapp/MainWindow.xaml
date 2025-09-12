@@ -1,44 +1,72 @@
 ﻿<Window x:Class="kenyapp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="KENYA - Bienvenido" Height="450" Width="800"
+        Title="Boliche Express"
         WindowStartupLocation="CenterScreen"
-        Background="White">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize"
+        WindowState="Maximized"
+        Background="#e8ecf1">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#f0f4f8" Offset="0"/>
+                <GradientStop Color="#dfe6ef" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-    <Grid Margin="20" Background="#f5f5f5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <TextBlock Text="Hola usuario de Kenya"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="20,20,0,0"
+                   FontSize="18"
+                   Foreground="#2c3e50"
+                   FontWeight="SemiBold"/>
 
-        <!-- Título -->
-        <TextBlock Text="KENYA" 
-                   Foreground="#0099D6" 
-                   FontSize="48" 
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   Margin="0,20,0,20"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,0">
+            <StackPanel Margin="0,0,30,0">
+                <Border Background="White" CornerRadius="20" Padding="30" Margin="0,0,0,30" Width="250" Height="120">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="🟦" FontSize="30" HorizontalAlignment="Center"/>
+                        <Button Content="Botonera" 
+                                Background="Transparent" BorderBrush="Transparent" 
+                                Foreground="#333" FontSize="18" FontWeight="Bold"
+                                Click="Botonera_Click"/>
+                    </StackPanel>
+                </Border>
 
-        <!-- Botones -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
-            <Button Content="💵 Botonera (Vender)" Height="60" FontSize="20" 
-                    Background="#0099D6" Foreground="White" FontWeight="Bold" 
-                    Margin="0,0,0,15"
-                    Click="Botonera_Click"/>
+                <Border Background="White" CornerRadius="20" Padding="30" Width="250" Height="120">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="⚙️" FontSize="30" HorizontalAlignment="Center"/>
+                        <Button Content="Administrar productos" 
+                                Background="Transparent" BorderBrush="Transparent"
+                                Foreground="#333" FontSize="18" FontWeight="Bold"
+                                Click="Ajustes_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
 
-            <Button Content="⚙️ Ajustes (Bebidas y Precios)" Height="60" FontSize="20"
-                    Background="#4CAF50" Foreground="White" FontWeight="Bold"
-                    Margin="0,0,0,15"
-                    Click="Ajustes_Click"/>
+            <StackPanel>
+                <Border Background="White" CornerRadius="20" Padding="30" Margin="0,0,0,30" Width="250" Height="120">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="📊" FontSize="30" HorizontalAlignment="Center"/>
+                        <Button Content="Reportes" 
+                                Background="Transparent" BorderBrush="Transparent"
+                                Foreground="#333" FontSize="18" FontWeight="Bold"
+                                Click="Reportes_Click"/>
+                    </StackPanel>
+                </Border>
 
-            <Button Content="📊 Reportes" Height="60" FontSize="20"
-                    Background="#3f51b5" Foreground="White" FontWeight="Bold"
-                    Margin="0,0,0,15"
-                    Click="Reportes_Click"/>
-
-            <Button Content="❌ Salir" Height="50" FontSize="18"
-                    Background="#b71c1c" Foreground="White" FontWeight="Bold"
-                    Click="Salir_Click"/>
+                <Border Background="White" CornerRadius="20" Padding="30" Width="250" Height="120">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="🚪" FontSize="30" HorizontalAlignment="Center"/>
+                        <Button Content="Cerrar sesión" 
+                                Background="Transparent" BorderBrush="Transparent"
+                                Foreground="#333" FontSize="18" FontWeight="Bold"
+                                Click="Salir_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

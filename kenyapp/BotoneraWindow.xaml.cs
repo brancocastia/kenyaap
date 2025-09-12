@@ -200,7 +200,15 @@ namespace kenyapp.Views
             _impresoraService = null;
             Close();
         }
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            // Cierra la ventana actual (VentaWindow)
+            this.Close();
 
+            // Abre la ventana principal (MainWindow)
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
         private void txtCantidad_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)

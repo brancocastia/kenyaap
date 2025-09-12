@@ -23,33 +23,14 @@ namespace kenyapp
 
         private void btbIngresar_Click(object sender, RoutedEventArgs e)
         {
-            // Acá abrís tu login o lo que necesites:
-            // Ejemplo: abrir otra ventana
-            // var login = new LoginWindow();
-            // login.Owner = this;
-            // login.ShowDialog();
-
-            MessageBox.Show("Ingresar pulsado");
+            var mainwindow = new MainWindow();
+            Application.Current.MainWindow = mainwindow; // ahora la nueva es la principal
+            mainwindow.Show();
+            this.Close();
         }
+
 
         private void btbCerrar_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void btnMaximizar_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-                this.WindowState = WindowState.Maximized;
-            else
-                this.WindowState = WindowState.Normal;
-        }
-        private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -61,10 +42,6 @@ namespace kenyapp
                 this.DragMove();
         }
 
-        public void MostrarNombreUsuario(string nombre)
-        {
-            lblUsuario.Text = $"¡Hola, {nombre}!";
-            UsuarioPanel.Visibility = Visibility.Visible;
-        }
+
     }
 }
