@@ -25,8 +25,12 @@ namespace kenyapp
 
         private void Botonera_Click(object sender, RoutedEventArgs e)
         {
+
             var botoneraWindow = new VentaWindow();
-            botoneraWindow.Show(); // Se abre de manera no modal
+            Application.Current.MainWindow = botoneraWindow; // ahora la nueva es la principal
+            botoneraWindow.Show();
+            this.Close();
+
         }
 
         private void Ajustes_Click(object sender, RoutedEventArgs e)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace kenyapp.Views
 {
@@ -57,29 +58,64 @@ namespace kenyapp.Views
         {
             try
             {
-                using var con = new SqliteConnection("Data Source=kenya.db");
+                using var con = new SqliteConnection("Data Source=boliche.db");
                 con.Open();
                 var cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT Id, Nombre, Precio FROM Bebidas WHERE Activo = 1 ORDER BY Nombre";
+
+                cmd.CommandText = "SELECT Id, Nombre, Tipo, Precio FROM Productos ORDER BY Nombre";
+
                 var reader = cmd.ExecuteReader();
                 var lista = new List<Producto>();
+
                 while (reader.Read())
                 {
                     lista.Add(new Producto
                     {
                         Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
-                        Precio = reader.GetDecimal(2)
+                        Tipo = reader.GetString(2),
+                        Precio = reader.GetDecimal(3)
                     });
                 }
-                lstBebidas.ItemsSource = lista;
+
+                // 🔹 Guardamos TODAS las bebidas
+                todasLasBebidas = lista;
+
+                // 🔹 Mostramos inicialmente todas
+                lstBebidas.ItemsSource = todasLasBebidas;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error cargando bebidas: " + ex.Message, "Error",
+                MessageBox.Show("Error cargando productos: " + ex.Message, "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private List<Producto> todasLasBebidas = new List<Producto>();
+        private void FiltroTipo_Click(object sender, RoutedEventArgs e)
+        {
+            if (todasLasBebidas == null || todasLasBebidas.Count == 0)
+                return;
+
+            var boton = sender as Button;
+            if (boton == null) return;
+
+            string tipoSeleccionado = boton.Content.ToString();
+
+            if (tipoSeleccionado == "Todos")
+            {
+                lstBebidas.ItemsSource = todasLasBebidas;
+            }
+            else
+            {
+                var filtradas = todasLasBebidas
+                    .Where(b => string.Equals(b.Tipo, tipoSeleccionado, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                lstBebidas.ItemsSource = filtradas;
+            }
+        }
+
 
         private void lstBebidas_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -203,13 +239,19 @@ namespace kenyapp.Views
         }
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
+            // Abre la ventana principal
+            var mainWindow = new MainWindow();
+
+            // Ahora la ventana principal es mainWindow
+            Application.Current.MainWindow = mainWindow;
+
+            // Muestra la nueva ventana
+            mainWindow.Show();
+
             // Cierra la ventana actual (VentaWindow)
             this.Close();
-
-            // Abre la ventana principal (MainWindow)
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
         }
+
         private void txtCantidad_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
